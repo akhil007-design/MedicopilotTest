@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Practice Suite]">
+  <test name="Test Basics 1(failed)">
+    <classes>
+      <class name="Test.java.TestCases.Dataprovider1">
+        <methods>
+          <include name="instanceDbProvider" invocation-numbers="2"/>
+        </methods>
+      </class> <!-- Test.java.TestCases.Dataprovider1 -->
+    </classes>
+  </test> <!-- Test Basics 1(failed) -->
+</suite> <!-- Failed suite [Practice Suite] -->

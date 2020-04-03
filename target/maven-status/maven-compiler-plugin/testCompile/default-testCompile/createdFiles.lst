@@ -1,0 +1,9 @@
+Test\java\TestCases\ReportFile.class
+Test\java\ExcelReaderCls\ExcelSheetReader.class
+Test\java\TestCases\Dataprovider1.class
+Test\java\TestCases\Medicopilot.class
+Test\java\dbverification\DBverification.class
+Test\java\MasterClsPkg\MasterActions.class
+Test\java\MasterClsPkg\screnshotcls.class
+Test\java\Connection1\ScriptRunner.class
+Test\java\MasterClsPkg\executionReport.class
