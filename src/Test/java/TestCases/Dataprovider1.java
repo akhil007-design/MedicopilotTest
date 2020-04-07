@@ -39,7 +39,7 @@ import Test.java.TestCases.*;
 //import Test.java.Connection1.*;
 import Test.java.MasterClsPkg.screnshotcls;
 import org.testng.annotations.Test;
-public class Dataprovider1
+public class Dataprovier1
 {
 	
 
