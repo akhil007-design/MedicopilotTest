@@ -70,14 +70,14 @@ public class Dataprovider1
 		System.out.println(TestCase);
 		System.out.println(RunStatus);
 		System.out.println(Browser1);
-        System.out.println("final1");
-	    System.out.println("Driver path for azure"+DriverPath);
+        
+	    System.out.println("Driver path for azurefsfdsds"+DriverPath);
 	    
 	    
 					if(RunStatus.equalsIgnoreCase("Y"))
 					{WebDriver webDriver = null;
 					int q=1;
-					System.out.println("final2");
+					System.out.println("final2hkh");
 					Medicopilot.TestCaseName=TestCase;
 					System.out.println("TestcaseName"+Medicopilot.TestCaseName);
 					System.out.println(RunStatus+"------------"+Medicopilot.TestCaseName);
