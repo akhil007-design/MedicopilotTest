@@ -69,7 +69,11 @@
         <artifactId>selenium-java</artifactId>
         <version>3.0.1</version>
     </dependency> 
-    
+    <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.4</version>
+</dependency>
     <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 <dependency>
     <groupId>org.apache.poi</groupId>
