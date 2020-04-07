@@ -71,6 +71,9 @@ public class Dataprovider1
 		System.out.println(RunStatus);
 		System.out.println(Browser1);
         System.out.println("final1");
+	    System.out.println("Driver path for azure"+DriverPath);
+	    
+	    
 					if(RunStatus.equalsIgnoreCase("Y"))
 					{WebDriver webDriver = null;
 					int q=1;
