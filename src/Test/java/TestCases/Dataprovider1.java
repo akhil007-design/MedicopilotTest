@@ -39,7 +39,7 @@ import Test.java.TestCases.*;
 //import Test.java.Connection1.*;
 import Test.java.MasterClsPkg.screnshotcls;
 import org.testng.annotations.Test;
-public class Dataprovier1
+public class Dataprovider1
 {
 	
 
@@ -71,7 +71,7 @@ public class Dataprovier1
 		System.out.println(RunStatus);
 		System.out.println(Browser1);
         
-	    System.out.println("Driver path for azurefsfdsds"+DriverPath);
+	    System.out.println("Driver path for azure"+DriverPath);
 	    
 	    
 					if(RunStatus.equalsIgnoreCase("Y"))
