@@ -89,6 +89,7 @@ public class Dataprovider1
 							{
 					case "Chrome":
 						{	
+							System.out.println("Driver path for azure"+DriverPath);
 						System.setProperty("webdriver.chrome.driver",path+DriverPath);
 						webDriver = new ChromeDriver();  
 						}
