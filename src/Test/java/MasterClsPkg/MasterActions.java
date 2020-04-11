@@ -3,6 +3,7 @@ package Test.java.MasterClsPkg;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,9 +37,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.security.UserAndPassword;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import java.util.Set;
 
@@ -48,6 +50,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+//import com.gargoylesoftware.htmlunit.javascript.host.Iterator;
 //import com.thoughtworks.selenium.webdriven.commands.KeyEvent;
 import com.google.common.base.Predicate;
 //mport com.thoughtworks.selenium.webdriven.commands.KeyEvent;
@@ -69,7 +72,7 @@ public class MasterActions {
 	private static final TimeUnit SECONDS = null;
 	WebDriver driver;
 	//static String PropertiesFile ="D:\\Eclipse\\Eclipse_Workspace\\ECGManagerAuto\\src\\ObjectRepository\\Medicopilot.properties";
-	static String PropertiesFile ="C:\\Users\\akhils\\workspace\\MedicalCopilot\\src\\Test\\java\\ObjectRepository\\Medicopilot.properties";
+	//static String PropertiesFile ="C:\\Users\\akhils\\workspace\\MedicalCopilot\\src\\Test\\java\\ObjectRepository\\Medicopilot.properties";
 	public static boolean TestCasePriorityRep=false;
 	private static String ID;
 	public static String ExceptionMessage="Working as per exp. res.";
@@ -79,6 +82,29 @@ public class MasterActions {
 	public static String Prvs_Text;
 	public static String Old_Text;
 	static String Current_Pwd;
+	public static String PropertiesFile;
+	public static Properties prop;
+	public static String path1;
+	public static String Driverpath1;
+
+public  MasterActions() throws IOException
+	{
+	path1=new File(".").getAbsolutePath();
+	path1=path1.substring(0,path1.length()-2);
+	 
+	PropertiesFile =path1+"\\src\\Test\\java\\ObjectRepository\\Medicopilot.properties";
+	prop =new Properties();
+		 FileInputStream finp=new FileInputStream(PropertiesFile);
+	     prop.load(finp);
+	    
+	}
+	
+
+
+
+
+
+
 	public static void sql_data() throws ClassNotFoundException, IOException, SQLException
 	{
 		Properties prop=new Properties();
@@ -2191,21 +2217,41 @@ public class MasterActions {
         case "launchBrowser":
         	
         	try
-        	{System.out.println("i am in launch");
-        		System.out.println(driver);
+        	{
         		
         		if (driver.equals("ChromeDriver: chrome on XP (null)"))
         		{
                 System.out.println(" i am in IF");
-        		System.setProperty("webdriver.chrome.driver", "C:\\Users\\akhils\\workspace\\MedicalCopilot\\Used\\Chrome\\chromedriver.exe");
-        		 driver = new ChromeDriver();
+                Driverpath1=prop.getProperty("DriverPath");
+        	    System.setProperty("webdriver.chrome.driver",path1+Driverpath1);
+        		driver = new ChromeDriver();
         		}
-        		System.out.println(driver);
+        		
+        		
+        		System.out.println("Afterlaunch print all link--------gjj");
+        		
+        	System.out.println(driver);
+			Thread.sleep(1000);
             driver.get(prop.getProperty(TestData));
+			System.out.println("Testdata"+TestData);
             driver.manage().timeouts().pageLoadTimeout(105, TimeUnit.SECONDS);
     		driver.manage().timeouts().implicitlyWait(35, TimeUnit.SECONDS);
     		driver.manage().window().maximize();
     		driver.manage().deleteAllCookies();
+    		Thread.sleep(3000);
+         	System.out.println("i am in launch print all link--------");
+    		
+    		List<WebElement> links = driver.findElements(By.tagName("a")); 
+    		System.out.println("Size of link"+links.size());
+    		java.util.Iterator<WebElement> it = links.iterator();
+    		
+    		while(it.hasNext()){
+    			String url = it.next().getAttribute("href");
+    	System.out.println(url); 
+    	
+    	System.out.println("Afterlaunch print all link--------");
+    	
+    		}
     		if(Screenshot.equalsIgnoreCase("Y"))
 			{
 				screnshotcls obj=new screnshotcls(driver);
