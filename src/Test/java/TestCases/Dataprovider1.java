@@ -27,6 +27,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import Test.java.TestCases.*;
@@ -39,6 +40,7 @@ import Test.java.TestCases.*;
 //import Test.java.Connection1.*;
 import Test.java.MasterClsPkg.screnshotcls;
 import org.testng.annotations.Test;
+
 public class Dataprovider1
 {
 	
@@ -54,30 +56,33 @@ public class Dataprovider1
 	@Test(dataProvider="getData")
     public void instanceDbProvider(Hashtable<String,String> myData1) throws Exception 
 	{
-		
+		MasterActions masteract1=new MasterActions();
 		String path1=new File(".").getAbsolutePath();
    	     path1=path1.substring(0,path1.length()-2);
 		 path=path1;
-		 String PropertiesFile =path+"\\src\\Test\\java\\ObjectRepository\\Medicopilot.properties";
+		 String PropertiesFile =path+"//src//Test//java//ObjectRepository//Medicopilot.properties";
 		 Properties prop=new Properties();
 		 FileInputStream finp=new FileInputStream(PropertiesFile);
 	     prop.load(finp);
 		 String DriverPath=prop.getProperty("DriverPath");
+		 String Workbookpath=prop.getProperty("Workbookname");
+		 System.out.println("Final11");
 		 System.out.println("Value of path in Test "+path);
+		  System.out.println("Final12");
 		String TestCase = myData1.get("TestCase");
 		String RunStatus= myData1.get("RunStatus");
 		String Browser1 = myData1.get("Browser");
 		System.out.println(TestCase);
 		System.out.println(RunStatus);
 		System.out.println(Browser1);
-        
+        System.out.println("final1");
 	    System.out.println("Driver path for azure"+DriverPath);
 	    
 	    
 					if(RunStatus.equalsIgnoreCase("Y"))
 					{WebDriver webDriver = null;
 					int q=1;
-					System.out.println("final2hkh");
+					System.out.println("final2");
 					Medicopilot.TestCaseName=TestCase;
 					System.out.println("TestcaseName"+Medicopilot.TestCaseName);
 					System.out.println(RunStatus+"------------"+Medicopilot.TestCaseName);
@@ -88,10 +93,15 @@ public class Dataprovider1
 					switch(SwitchCaseActionName1)
 							{
 					case "Chrome":
-						{	
-							System.out.println("Driver path for azure"+DriverPath);
+						{
+							System.out.println("i am in chrome--");
 						System.setProperty("webdriver.chrome.driver",path+DriverPath);
-						webDriver = new ChromeDriver();  
+				        DesiredCapabilities handlSSL = DesiredCapabilities.chrome ();  
+						       //handlSSL.setCapability(URL1, true);
+								handlSSL.setCapability (CapabilityType.ACCEPT_SSL_CERTS, true);
+								System.out.println("i am in HandSSL--"+handlSSL);
+								//handlSSL.getBrowserName();
+								webDriver = new ChromeDriver (handlSSL);
 						}
 		
 		                break;
@@ -125,9 +135,11 @@ public class Dataprovider1
 					}
 					break;
 							} 
+							 System.out.println("Before excel sheet");
 					    ExcelSheetReader workbook=new ExcelSheetReader();
 					    System.out.println("final5");
-						Sheet sh=workbook.getSheetName("C:\\Users\\akhils\\workspace\\MedicalCopilot\\Workbook\\HV_TestCases_Selenium.xlsx","Testcases");
+						Sheet sh=workbook.getSheetName( path+Workbookpath,"Testcases");
+						 System.out.println("after excel sheet");
 						Row r; 
 						int j=sh.getLastRowNum()-sh.getFirstRowNum();
 						System.out.print("Webdriver value"+webDriver);
@@ -137,6 +149,7 @@ public class Dataprovider1
 						{	
 							for(int i=1;i<=j;i++)		
 							{
+								System.out.println("after excel sheet in loop");
 								int stepno=1;
 								MasterActions.TestCasePriorityRep=false;
 								Medicopilot.TestCaseStapeNo=stepno;
