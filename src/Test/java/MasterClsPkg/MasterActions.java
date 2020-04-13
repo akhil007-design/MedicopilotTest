@@ -657,10 +657,10 @@ public  MasterActions() throws IOException
 				System.out.println("next1 click"+LocatorType);
 				Thread.sleep(1000);
 				System.out.println("next2 click"+LocatorValue);
-				Thread.sleep(10000);
+				Thread.sleep(1000);
 				System.out.println("get object value"+this.getObject(LocatorValue,LocatorType));
-				Thread.sleep(10000);
-				System.out.println("Driver"+driver);
+				Thread.sleep(1000);
+				System.out.println("Driver---"+driver);
 				driver.findElement(this.getObject(LocatorValue,LocatorType)).click();
 				System.out.println("next1 click");
 				Medicopilot.TestCaseStapeStatus="Pass";
