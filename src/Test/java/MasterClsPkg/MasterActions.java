@@ -2250,8 +2250,10 @@ public  MasterActions() throws IOException
     	System.out.println(url); 
     	
     	System.out.println("Afterlaunch print all link--------");
-    	String currurl=driver.getTitle();
-    	System.out.println("Current URL"+currurl);
+    	String currTitle=driver.getTitle();
+    	System.out.println("Current Title"+ currTitle);
+    	String ULRCu=driver.getCurrentUrl();
+    	System.out.println("Current URL"+ULRCu);
     		}
     		if(Screenshot.equalsIgnoreCase("Y"))
 			{
